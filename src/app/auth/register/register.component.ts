@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -25,20 +26,33 @@ export class RegisterComponent {
     }
   );
 
-  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService) {}
+  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService, private router: Router) {}
 
   crearUsuario() {
     this.formSubmitted = true;
     console.log(this.registerForm.value);
     if (this.registerForm.valid) {
       this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
-        (resp) => {
-          Swal.fire({
-            title: 'Exito!',
-            text: 'Usuario registrado',
-            icon: 'success',
-            confirmButtonText: 'Ok'
-          })
+        (resp: any) => {
+          if (resp.status) {
+            Swal.fire({
+              title: 'Exito!',
+              text: resp.message,
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigateByUrl('/login');
+              }
+            });
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              text: resp.message,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
         },
         (err) => console.warn(err)
       );
