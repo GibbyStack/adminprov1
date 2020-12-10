@@ -5,6 +5,7 @@ import { environment } from '../../environments/environment.prod';
 import { LoginForm } from '../interfaces/login-form.interface';
 import { tap, map, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
+import { RenewPasswordForm } from '../interfaces/renewpassword-form.interface';
 
 const base_url = environment.base_url;
 
@@ -47,5 +48,9 @@ export class UsuarioService {
       map((resp) => true),
       catchError((error) => of(false))
     );
+  }
+
+  renewPassword(formData: RenewPasswordForm) {
+    return this.http.put(`${base_url}/usuarios/changepassword`, formData);
   }
 }

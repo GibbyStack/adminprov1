@@ -5,33 +5,28 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: [ './register.component.css']
+  selector: 'app-renewpassword',
+  templateUrl: './renewpassword.component.html',
+  styleUrls: ['./renewpassword.component.css']
 })
-export class RegisterComponent {
+export class RenewpasswordComponent {
 
   public formSubmitted = false;
 
-  public registerForm = this.formBuilder.group(
+  public renewpasswordForm = this.formBuilder.group(
     {
-      nombre: ['Gibby', Validators.required],
-      email: ['gibby@rifa.com', [Validators.required, Validators.email]],
-      password: ['1234', Validators.required],
-      password2: ['1234', Validators.required],
-      terminos: [false, Validators.requiredTrue],
-    },
-    {
-      validators: this.passwordsIguales('password', 'password2'),
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
     }
-  );
+  )
 
-  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private usuarioService: UsuarioService, private router: Router) { }
 
-  crearUsuario() {
+  changePassword() {
     this.formSubmitted = true;
-    if (this.registerForm.valid) {
-      this.usuarioService.crearUsuario(this.registerForm.value).subscribe(
+    if (this.renewpasswordForm.valid) {
+      this.usuarioService.renewPassword(this.renewpasswordForm.value).subscribe(
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
@@ -59,9 +54,8 @@ export class RegisterComponent {
       console.log('formulario no valido');
     }
   }
-
   campoNoValido(campo: string): boolean {
-    if (this.registerForm.get(campo).invalid && this.formSubmitted) {
+    if (this.renewpasswordForm.get(campo).invalid && this.formSubmitted) {
       return true;
     } else {
       return false;
@@ -69,8 +63,8 @@ export class RegisterComponent {
   }
 
   contrasenasNoValidas() {
-    const pass1 = this.registerForm.get('password').value;
-    const pass2 = this.registerForm.get('password2').value;
+    const pass1 = this.renewpasswordForm.get('password').value;
+    const pass2 = this.renewpasswordForm.get('password2').value;
     if (pass1 !== pass2 && this.formSubmitted) {
       return true;
     } else {
@@ -78,11 +72,7 @@ export class RegisterComponent {
     }
   }
 
-  aceptaTerminos() {
-    return !this.registerForm.get('terminos').value && this.formSubmitted;
-  }
-
-  passwordsIguales(pass1Name: string, pass2Name: string) {
+  passwordIguales(pass1Name: string, pass2Name: string) {
     return (formGroup: FormGroup) => {
       const pass1Control = formGroup.get(pass1Name);
       const pass2Control = formGroup.get(pass2Name);
@@ -93,5 +83,4 @@ export class RegisterComponent {
       }
     };
   }
-
 }

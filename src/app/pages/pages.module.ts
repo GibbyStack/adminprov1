@@ -2,15 +2,16 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
-import { Grafica1Component } from './grafica1/grafica1.component';
 import { PagesComponent } from './pages.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ComponentsModule } from '../components/components.module';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
-import { PromesasComponent } from './promesas/promesas.component';
-import { RxjsComponent } from './rxjs/rxjs.component';
+import { AlumnosComponent } from './alumnos/alumnos.component';
+import { DocentesComponent } from './docentes/docentes.component';
+import { MateriasComponent } from './materias/materias.component';
+import { AlumnoupdateComponent } from './alumnos/alumnoupdate/alumnoupdate.component';
 
 
 
@@ -18,20 +19,18 @@ import { RxjsComponent } from './rxjs/rxjs.component';
   declarations: [
     DashboardComponent,
     ProgressComponent,
-    Grafica1Component,
     PagesComponent,
     AccountSettingsComponent,
-    PromesasComponent,
-    RxjsComponent
+    AlumnosComponent,
+    DocentesComponent,
+    MateriasComponent,
+    AlumnoupdateComponent
   ],
   exports: [
     DashboardComponent,
     ProgressComponent,
-    Grafica1Component,
     PagesComponent,
-    AccountSettingsComponent,
-    PromesasComponent,
-    RxjsComponent
+    AccountSettingsComponent
   ],
   imports: [
     CommonModule, SharedModule, RouterModule, FormsModule, ComponentsModule

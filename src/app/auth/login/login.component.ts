@@ -100,7 +100,15 @@ export class LoginComponent implements OnInit {
     this.auth2.attachClickHandler(element, {},
         (googleUser) => {
           const id_token = googleUser.getAuthResponse().id_token;
-          this.usuarioService.loginGoogle(id_token).subscribe();
+          this.usuarioService.loginGoogle(id_token).subscribe((resp) => {
+            if (resp.status) {
+              console.log("Inicio correcto");
+              this.router.navigateByUrl('/');
+            } else {
+              console.log("Inicio incorrecto");
+
+            }
+          });
         },
         (error) => {
           alert(JSON.stringify(error, undefined, 2));
