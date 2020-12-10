@@ -31,32 +31,45 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    this.usuarioService.login(this.loginForm.value).subscribe((resp: any) => {
-      if (resp.status) {
-        if (this.loginForm.get('remember').value) {
-          localStorage.setItem('email', this.loginForm.get('email').value);
-        } else {
-          localStorage.removeItem('email');
-        }
-        Swal.fire({
-          title: 'Exito!',
-          text: resp.message,
-          icon: 'success',
-          confirmButtonText: 'Ok',
-        }).then((result) => {
-          if (result.isConfirmed) {
-            this.router.navigateByUrl('/');
+    this.formSubmitted = true;
+    if (this.loginForm.valid) {
+      this.usuarioService.login(this.loginForm.value).subscribe((resp: any) => {
+        if (resp.status) {
+          if (this.loginForm.get('remember').value) {
+            localStorage.setItem('email', this.loginForm.get('email').value);
+          } else {
+            localStorage.removeItem('email');
           }
-        });
-      } else {
-        Swal.fire({
-          title: 'Error!',
-          text: resp.message,
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-      }
-    });
+          Swal.fire({
+            title: 'Exito!',
+            text: resp.message,
+            icon: 'success',
+            confirmButtonText: 'Ok',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigateByUrl('/');
+            }
+          });
+        } else {
+          Swal.fire({
+            title: 'Error!',
+            text: resp.message,
+            icon: 'error',
+            confirmButtonText: 'Ok',
+          });
+        }
+      });
+    } else {
+      console.log('formulario no valido');
+    }
+  }
+
+  campoNoValido(campo: string): boolean {
+    if (this.loginForm.get(campo).invalid && this.formSubmitted) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   renderButton() {
