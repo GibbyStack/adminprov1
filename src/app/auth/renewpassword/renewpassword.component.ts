@@ -18,6 +18,9 @@ export class RenewpasswordComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
       password2: ['', Validators.required],
+    },
+    {
+      validators: this.passwordsIguales('password', 'password2'),
     }
   )
 
@@ -72,7 +75,7 @@ export class RenewpasswordComponent {
     }
   }
 
-  passwordIguales(pass1Name: string, pass2Name: string) {
+  passwordsIguales(pass1Name: string, pass2Name: string) {
     return (formGroup: FormGroup) => {
       const pass1Control = formGroup.get(pass1Name);
       const pass2Control = formGroup.get(pass2Name);

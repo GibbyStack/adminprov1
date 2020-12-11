@@ -15,8 +15,8 @@ export class AlumnoService {
     return this.http.get(`${base_url}/alumnos`);
   }
 
-  getAlumno(id: number) {
-    return this.http.get(`${base_url}/alumnos`);
+  getSingleAlumno(id) {
+    return this.http.get(`${base_url}/alumnos/${id}`);
   }
 
 }
