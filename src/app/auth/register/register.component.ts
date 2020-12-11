@@ -15,11 +15,11 @@ export class RegisterComponent {
 
   public registerForm = this.formBuilder.group(
     {
-      nombre: ['Gibby', Validators.required],
-      email: ['gibby@rifa.com', [Validators.required, Validators.email]],
-      password: ['1234', Validators.required],
-      password2: ['1234', Validators.required],
-      terminos: [false, Validators.requiredTrue],
+      nombre: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
+      terminos: [, Validators.requiredTrue],
     },
     {
       validators: this.passwordsIguales('password', 'password2'),

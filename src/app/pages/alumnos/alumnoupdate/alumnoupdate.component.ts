@@ -13,8 +13,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   ]
 })
 export class AlumnoupdateComponent implements OnInit{
-  
-  alumno: Alumno;
+
+  private alumno: Alumno;
+  private idAlumno: string;
+  private token: string;
   public formSubmitted = false;
 
   public alumnoupdateForm = this.formBuilder.group(
@@ -30,12 +32,12 @@ export class AlumnoupdateComponent implements OnInit{
   constructor(private formBuilder: FormBuilder, private alumnoservice: AlumnoService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    let idAlumno = this.activeRoute.snapshot.paramMap.get('id');
-    let token = this.getToken();
-    this.alumnoservice.getSingleAlumno(idAlumno).subscribe((resp: any) => {
+    this.idAlumno = this.activeRoute.snapshot.paramMap.get('id');
+    this.token = this.getToken();
+    this.alumnoservice.getSingleAlumno(this.idAlumno).subscribe((resp: any) => {
       if (resp.status) {
         this.alumno = resp.data;
-        console.log(this.alumno);
+        this.initForm(this.alumno);
       } else {
         Swal.fire({
           title: 'Error!',
@@ -49,5 +51,57 @@ export class AlumnoupdateComponent implements OnInit{
 
   getToken(){
     return localStorage.getItem('token');
+  }
+
+  initForm(alumno: Alumno){
+    this. alumnoupdateForm = this.formBuilder.group(
+      {
+        nombre: [alumno.nombre, Validators.required],
+        edad: [alumno.edad, Validators.required],
+        sexo: [alumno.sexo, Validators.required],
+        semestre: [alumno.semestre, Validators.required],
+        carrera: [alumno.carrera, Validators.required],
+      }
+    )
+  }
+
+  campoNoValido(campo: string): boolean {
+    if (this.alumnoupdateForm.get(campo).invalid && this.formSubmitted) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  actualizarAlumno(){
+    this.formSubmitted = true;
+    if (this.alumnoupdateForm.valid){
+      this.alumnoservice.crearAlumno(this.idAlumno, this.alumnoupdateForm.value).subscribe(
+        (resp: any) => {
+          if (resp.status) {
+            Swal.fire({
+              title: 'Exito!',
+              text: resp.message,
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                this.router.navigateByUrl('/dashboard/alumnos');
+              }
+            });
+          } else {
+            Swal.fire({
+              title: 'Error!',
+              text: resp.message,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            });
+          }
+        },
+        (err) => console.warn(err)
+      );
+    } else {
+      console.log('formulario no valido');
+    }
   }
 }

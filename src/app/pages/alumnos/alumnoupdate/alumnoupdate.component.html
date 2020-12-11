@@ -1,6 +1,6 @@
 <div class="login-box card">
     <div class="card-body">
-        <form action="#">
+        <form (ngSubmit)="actualizarAlumno()" [formGroup]="alumnoupdateForm">
             <div class="form-body">
                 <h3 class="card-title">Informacion Alumno</h3>
                 <hr>
@@ -8,14 +8,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Nombre</label>
-                            <input class="form-control" type="text" placeholder="Nombre">
+                            <input class="form-control" type="text" placeholder="Nombre" formControlName="nombre">
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Edad</label>
-                            <input class="form-control" type="number" placeholder="Edad">
+                            <input class="form-control" type="number" placeholder="Edad" formControlName="edad">
                         </div>
                     </div>
                     <!--/span-->
@@ -25,7 +25,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Sexo</label>
-                            <select class="form-control custom-select">
+                            <select class="form-control custom-select" formControlName="sexo">
                                 <option value="M">Masculino</option>
                                 <option value="F">Femenino</option>
                             </select>
@@ -35,16 +35,16 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label class="control-label">Semestre</label>
-                            <select class="form-control custom-select">
+                            <select class="form-control custom-select" formControlName="semestre">
                                 <option value=1>Primero</option>
                                 <option value=2>Segundo</option>
-                                <option value=2>Tercero</option>
-                                <option value=2>Cuarto</option>
-                                <option value=2>Quinto</option>
-                                <option value=2>Sexto</option>
-                                <option value=2>Septimo</option>
-                                <option value=2>Octavo</option>
-                                <option value=2>Noveno</option>
+                                <option value=3>Tercero</option>
+                                <option value=4>Cuarto</option>
+                                <option value=5>Quinto</option>
+                                <option value=6>Sexto</option>
+                                <option value=7>Septimo</option>
+                                <option value=8>Octavo</option>
+                                <option value=9>Noveno</option>
                             </select>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label class="control-label">Carrera</label>
-                        <select class="form-control custom-select" data-placeholder="Choose a Category" tabindex="1">
-                                <option value="INFO">Informatica</option>
+                        <select class="form-control custom-select" data-placeholder="Carrera" tabindex="1" formControlName="carrera">
+                                <option value="INFO">INFORMATICA</option>
                                 <option value="INDU">INDUSTRIAL</option>
                                 <option value="BIOQ">BIOQUIMICA</option>
                                 <option value="GEST">GESTION EMPRESARIAL</option>
@@ -66,10 +66,17 @@
                 </div>
             </div>
             <!--/row-->
+            <div class="col text-danger">
+                <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
+                <p *ngIf="campoNoValido('edad')">La edad es obligatoria</p>
+                <p *ngIf="campoNoValido('sexo')">El sexo es obligatorio</p>
+                <p *ngIf="campoNoValido('semestre')">El sexo es obligatorio</p>
+                <p *ngIf="campoNoValido('carrera')">El sexo es obligatorio</p>
+            </div>
             <hr>
             <div class="form-actions">
                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
-                <button type="button" class="btn btn-inverse" style="margin-left: 1em;">Cancel</button>
+                <button type="button" class="btn btn-inverse" routerLink="/dashboard/alumnos" style="margin-left: 1em;">Cancel</button>
             </div>
         </form>
     </div>

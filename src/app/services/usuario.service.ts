@@ -36,7 +36,7 @@ export class UsuarioService {
   }
 
   validarToken(): Observable<boolean> {
-    const token = localStorage.getItem('token') || ''
+    const token = localStorage.getItem('token') || '';
     return this.http.get(`${base_url}/login/renew`, {
       headers: {
         'x-token': token
@@ -45,7 +45,12 @@ export class UsuarioService {
       tap((resp: any) => {
         localStorage.setItem('token', resp.data);
       }),
-      map((resp) => true),
+      map((resp) => {
+        if (resp.data)
+          return true;
+        else
+            return false
+      }),
       catchError((error) => of(false))
     );
   }
