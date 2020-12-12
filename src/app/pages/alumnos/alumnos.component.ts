@@ -17,7 +17,7 @@ export class AlumnosComponent implements OnInit {
 
   ngOnInit(): void {
     this.alumnoService.getAllAlumnos().subscribe((resp: any) => {
-      if (resp.status){
+      if (resp.status) {
         this.alumnos = resp.data;
       } else {
         Swal.fire({

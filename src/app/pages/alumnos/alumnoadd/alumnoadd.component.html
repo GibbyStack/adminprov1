@@ -1,8 +1,8 @@
 <div class="login-box card">
     <div class="card-body">
-        <form (ngSubmit)="actualizarAlumno()" [formGroup]="alumnoupdateForm">
+        <form (ngSubmit)="crearAlumno()" [formGroup]="alumnoaddForm">
             <div class="form-body">
-                <h3 class="card-title">Informacion Alumno</h3>
+                <h3 class="card-title">Informacion necesaria para el registro del Alumno</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
@@ -71,7 +71,7 @@
                 <p *ngIf="campoNoValido('edad')">La edad es obligatoria</p>
                 <p *ngIf="campoNoValido('sexo')">El sexo es obligatorio</p>
                 <p *ngIf="campoNoValido('semestre')">El semestre es obligatorio</p>
-                <p *ngIf="campoNoValido('carrera')">La carrera es obligatoria</p>
+                <p *ngIf="campoNoValido('carrera')">La carrera es obligatorio</p>
             </div>
             <hr>
             <div class="form-actions">

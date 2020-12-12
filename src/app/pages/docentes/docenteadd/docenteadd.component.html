@@ -1,0 +1,57 @@
+<div class="login-box card">
+    <div class="card-body">
+        <form (ngSubmit)="crearDocente()" [formGroup]="docenteaddForm">
+            <div class="form-body">
+                <h3 class="card-title">Informacion necesaria para el registro del Docente</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombre</label>
+                            <input class="form-control" type="text" formControlName="nombre">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Edad</label>
+                            <input class="form-control" type="number" formControlName="edad">
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Titulo</label>
+                            <input class="form-control" type="text" formControlName="titulo">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Tipo</label>
+                            <select class="form-control custom-select" formControlName="tipo">
+                                <option value="PLANTA">PLANTA</option>
+                                <option value="MEDIO TIEMPO">MEDIO TIEMPO</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <div class="col text-danger">
+                <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
+                <p *ngIf="campoNoValido('edad')">La edad es obligatoria</p>
+                <p *ngIf="campoNoValido('titulo')">El sexo es obligatorio</p>
+                <p *ngIf="campoNoValido('tipo')">El semestre es obligatorio</p>
+            </div>
+            <hr>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                <button type="button" class="btn btn-inverse" routerLink="/dashboard/docentes" style="margin-left: 1em;">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

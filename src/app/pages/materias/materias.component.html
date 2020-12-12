@@ -1,1 +1,31 @@
-<p>Materias!</p>
+<div class="container">
+    <div>
+        <button routerLink="" type="button" class="btn btn-info">Nueva Materia</button>
+        <hr>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table color-table info-table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Horas</th>
+                    <th scope="col">Horas P</th>
+                    <th scope="col">Horas T</th>
+                    <th scope="col">Creditos</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let materia of materias" (click)="updateMateria(materia.idMateria)">
+                    <th scope="row">{{materia.idMateria}}</th>
+                    <td>{{materia.nombre}}</td>
+                    <td>{{materia.horas}}</td>
+                    <td>{{materia.horasP}}</td>
+                    <td>{{materia.horasT}}</td>
+                    <td>{{materia.creditos}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

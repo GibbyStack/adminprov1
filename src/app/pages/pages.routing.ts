@@ -9,6 +9,10 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { MateriasComponent } from './materias/materias.component';
 import { AlumnoupdateComponent } from './alumnos/alumnoupdate/alumnoupdate.component';
+import { AlumnoaddComponent } from './alumnos/alumnoadd/alumnoadd.component';
+import { DocenteupdateComponent } from './docentes/docenteupdate/docenteupdate.component';
+import { DocenteaddComponent } from './docentes/docenteadd/docenteadd.component';
+import { MateriaupdateComponent } from './materias/materiaupdate/materiaupdate.component';
 
 const routes: Routes = [
   {
@@ -22,7 +26,11 @@ const routes: Routes = [
       {path: 'alumnos', component: AlumnosComponent, data: {titulo: 'Alumnos'}},
       {path: 'docentes', component: DocentesComponent, data: {titulo: 'Docentes'}},
       {path: 'materias', component: MateriasComponent, data: {titulo: 'Materias'}},
-      {path: 'updatealumno/:id', component: AlumnoupdateComponent, data: {titulo: 'Update Alumno'}}
+      {path: 'updatealumno/:id', component: AlumnoupdateComponent, data: {titulo: 'Update Alumno'}},
+      {path: 'addalumno', component: AlumnoaddComponent, data: {titulo: 'Add Alumno'}},
+      {path: 'updatedocente/:id', component: DocenteupdateComponent, data: {titulo: 'Update Docente'}},
+      {path: 'adddocente', component: DocenteaddComponent, data: {titulo: 'Add Docente'}},
+      {path: 'updatemateria/:id', component: MateriaupdateComponent, data: {titulo: 'Update Materia'}}
     ]
   }
 ];

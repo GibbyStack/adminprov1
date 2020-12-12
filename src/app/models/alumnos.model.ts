@@ -6,5 +6,5 @@ export class Alumno {
     public sexo: string,
     public semestre: number,
     public carrera: string
-  ){}
+  ) {}
 }

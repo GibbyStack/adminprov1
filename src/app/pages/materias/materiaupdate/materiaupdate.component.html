@@ -1,0 +1,56 @@
+<div class="login-box card">
+    <div class="card-body">
+        <form (ngSubmit)="actualizarMateria()" [formGroup]="materiaupdateForm">
+            <div class="form-body">
+                <h3 class="card-title">Informacion Docente</h3>
+                <hr>
+                <div class="row p-t-20">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Nombre</label>
+                            <input class="form-control" type="text" formControlName="nombre">
+                        </div>
+                    </div>
+                    <!--/span-->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Horas</label>
+                            <select class="form-control custom-select" formControlName="horas">
+                                <option value=1>1</option>
+                                <option value=2>2</option>
+                                <option value=3>3</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="control-label">Creditos</label>
+                            <select class="form-control custom-select" formControlName="creditos">
+                                <option value=1>1</option>
+                                <option value=4>4</option>
+                                <option value=5>5</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <div class="col text-danger">
+                <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
+                <p *ngIf="campoNoValido('horas')">La edad es obligatoria</p>
+                <p *ngIf="campoNoValido('creditos')">El sexo es obligatorio</p>
+            </div>
+            <hr>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
+                <button type="button" class="btn btn-inverse" routerLink="/dashboard/materias" style="margin-left: 1em;">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

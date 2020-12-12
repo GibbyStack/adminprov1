@@ -12,6 +12,10 @@ import { AlumnosComponent } from './alumnos/alumnos.component';
 import { DocentesComponent } from './docentes/docentes.component';
 import { MateriasComponent } from './materias/materias.component';
 import { AlumnoupdateComponent } from './alumnos/alumnoupdate/alumnoupdate.component';
+import { AlumnoaddComponent } from './alumnos/alumnoadd/alumnoadd.component';
+import { DocenteupdateComponent } from './docentes/docenteupdate/docenteupdate.component';
+import { DocenteaddComponent } from './docentes/docenteadd/docenteadd.component';
+import { MateriaupdateComponent } from './materias/materiaupdate/materiaupdate.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { AlumnoupdateComponent } from './alumnos/alumnoupdate/alumnoupdate.compo
     AlumnosComponent,
     DocentesComponent,
     MateriasComponent,
-    AlumnoupdateComponent
+    AlumnoupdateComponent,
+    AlumnoaddComponent,
+    DocenteupdateComponent,
+    DocenteaddComponent,
+    MateriaupdateComponent
   ],
   exports: [
     DashboardComponent,

@@ -3,8 +3,7 @@ import { AlumnoService } from '../../../services/alumno.service';
 import { Alumno } from '../../../models/alumnos.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from 'sweetalert2';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-alumnoupdate',
@@ -54,7 +53,7 @@ export class AlumnoupdateComponent implements OnInit{
   }
 
   initForm(alumno: Alumno){
-    this. alumnoupdateForm = this.formBuilder.group(
+    this.alumnoupdateForm = this.formBuilder.group(
       {
         nombre: [alumno.nombre, Validators.required],
         edad: [alumno.edad, Validators.required],
@@ -75,8 +74,8 @@ export class AlumnoupdateComponent implements OnInit{
 
   actualizarAlumno(){
     this.formSubmitted = true;
-    if (this.alumnoupdateForm.valid){
-      this.alumnoservice.crearAlumno(this.idAlumno, this.alumnoupdateForm.value).subscribe(
+    if (this.alumnoupdateForm.valid) {
+      this.alumnoservice.updateAlumno(this.idAlumno, this.alumnoupdateForm.value).subscribe(
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
