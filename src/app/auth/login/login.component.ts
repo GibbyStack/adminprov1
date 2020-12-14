@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
 import { UsuarioService } from '../../services/usuario.service';
 import Swal from 'sweetalert2';
+import { DataService } from '../../services/data.service';
 
 declare const gapi: any;
 
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     remember: [false],
   });
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.renderButton();
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
             confirmButtonText: 'Ok',
           }).then((result) => {
             if (result.isConfirmed) {
+              this.dataService.email = this.loginForm.get('email').value;
               this.router.navigateByUrl('/');
             }
           });
@@ -102,11 +104,10 @@ export class LoginComponent implements OnInit {
           const id_token = googleUser.getAuthResponse().id_token;
           this.usuarioService.loginGoogle(id_token).subscribe((resp) => {
             if (resp.status) {
-              console.log("Inicio correcto");
+              let profile = googleUser.getBasicProfile();
+              this.dataService.email = profile.getEmail();
               this.router.navigateByUrl('/');
             } else {
-              console.log("Inicio incorrecto");
-
             }
           });
         },

@@ -1,30 +1,30 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { DocenteService } from '../../../services/docente.service';
+import { MateriaService } from '../../../services/materia.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
+
 @Component({
-  selector: 'app-docenteadd',
-  templateUrl: './docenteadd.component.html',
+  selector: 'app-materiaadd',
+  templateUrl: './materiaadd.component.html',
   styles: [
   ]
 })
-export class DocenteaddComponent implements OnInit {
+export class MateriaaddComponent implements OnInit {
 
   private token: string;
   public formSubmitted = false;
 
-  public docenteaddForm = this.formBuilder.group(
+  public materiaaddForm = this.formBuilder.group(
     {
       nombre: ['', Validators.required],
-      edad: ['', Validators.required],
-      titulo: ['', Validators.required],
-      tipo: ['', Validators.required],
+      horas: ['', Validators.required],
+      creditos: ['', Validators.required]
     }
   )
 
-  constructor(private formBuilder: FormBuilder, private docenteService: DocenteService, private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private matariaService: MateriaService, private router: Router) { }
 
   ngOnInit(): void {
     this.token = this.getToken();
@@ -35,27 +35,27 @@ export class DocenteaddComponent implements OnInit {
   }
 
   campoNoValido(campo: string): boolean {
-    if (this.docenteaddForm.get(campo).invalid && this.formSubmitted) {
+    if (this.materiaaddForm.get(campo).invalid && this.formSubmitted) {
       return true;
     } else {
       return false;
     }
   }
 
-  crearDocente(){
+  crearMateria() {
     this.formSubmitted = true;
-    if (this.docenteaddForm.valid) {
-      this.docenteService.addDocente(this.docenteaddForm.value).subscribe(
+    if (this.materiaaddForm.valid) {
+      this.matariaService.addMateria(this.materiaaddForm.value).subscribe(
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
               title: 'Exito!',
-              text: resp.message,
-              icon: 'success',
-              confirmButtonText: 'Ok'
+                text: resp.message,
+                icon: 'success',
+                confirmButtonText: 'Ok'
             }).then((result) => {
               if (result.isConfirmed) {
-                this.router.navigateByUrl('/dashboard/docentes')
+                this.router.navigateByUrl('/dashboard/materias')
               }
             });
           } else {

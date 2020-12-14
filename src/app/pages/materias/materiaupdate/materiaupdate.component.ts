@@ -97,7 +97,36 @@ export class MateriaupdateComponent implements OnInit {
       );
     } else {
       console.log('formulario no valido');
-      
     }
+  }
+
+  borrarMateria(){
+    Swal.fire({
+      title: 'Estas seguro de eliminar a:',
+      text: this.materia.nombre,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+      cancelButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.materiaService.deleteMateria(this.idMateria).subscribe(
+          (resp: any) => {
+            if (resp.status) {
+              Swal.fire({
+                title: 'Exito!',
+                text: resp.message,
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              }).then((result: any) => {
+                if (result.isConfirmed) {
+                  this.router.navigateByUrl('/dashboard/materias');
+                }
+              })
+            }
+          }
+        )
+      }
+    })
   }
 }

@@ -6,6 +6,7 @@ import { LoginForm } from '../interfaces/login-form.interface';
 import { tap, map, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { RenewPasswordForm } from '../interfaces/renewpassword-form.interface';
+import { ProfileForm } from '../interfaces/profile-form.interface';
 
 const base_url = environment.base_url;
 
@@ -17,6 +18,10 @@ export class UsuarioService {
 
   crearUsuario(formData: RegisterForm) {
     return this.http.post(`${base_url}/usuarios`, formData);
+  }
+
+  getSingleUsuario(formData: ProfileForm) {
+    return this.http.put(`${base_url}/usuarios/email`, formData);
   }
 
   login(formData: LoginForm) {

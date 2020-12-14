@@ -1,8 +1,8 @@
 <div class="login-box card">
     <div class="card-body">
-        <form (ngSubmit)="actualizarMateria()" [formGroup]="materiaupdateForm">
+        <form (ngSubmit)="crearMateria()" [formGroup]="materiaaddForm">
             <div class="form-body">
-                <h3 class="card-title">Informacion Materia</h3>
+                <h3 class="card-title">Informacion necesaria para el registro de la Materia</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
@@ -16,10 +16,10 @@
                         <div class="form-group">
                             <label class="control-label">Horas</label>
                             <select class="form-control custom-select" formControlName="horas">
-                                <option value=1>1</option>
-                                <option value=4>4</option>
-                                <option value=5>5</option>
-                            </select>
+                              <option value=1>1</option>
+                              <option value=4>4</option>
+                              <option value=5>5</option>
+                          </select>
                         </div>
                     </div>
                     <!--/span-->
@@ -35,7 +35,7 @@
                               <option value=3>3</option>
                               <option value=4>4</option>
                               <option value=5>5</option>
-                            </select>
+                          </select>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,6 @@
             <div class="form-actions">
                 <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Save</button>
                 <button type="button" class="btn btn-inverse" routerLink="/dashboard/materias" style="margin-left: 1em;">Cancel</button>
-                <button type="button" class="btn btn-danger" (click)="borrarMateria()" style="margin-left: 10em;">Delete</button>
             </div>
         </form>
     </div>

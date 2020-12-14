@@ -101,4 +101,34 @@ export class DocenteupdateComponent implements OnInit {
       console.log('formulario no valido');
     }
   }
+
+  borrarDocente(){
+    Swal.fire({
+      title: 'Estas seguro de eliminar a:',
+      text: this.docente.nombre,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Confirm',
+      cancelButtonText: `Cancel`,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.docenteService.deleteDocente(this.idDocente).subscribe(
+          (resp: any) => {
+            if (resp.status) {
+              Swal.fire({
+                title: 'Exito!',
+                text: resp.message,
+                icon: 'success',
+                confirmButtonText: 'Ok'
+              }).then((result: any) => {
+                if (result.isConfirmed) {
+                  this.router.navigateByUrl('/dashboard/docentes');
+                }
+              })
+            }
+          }
+        )
+      }
+    })
+  }
 }
