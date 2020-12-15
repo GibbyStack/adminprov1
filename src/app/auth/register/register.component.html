@@ -37,14 +37,14 @@
                 </div>
                 <div class="row">
                     <div class="col text-danger">
-                        <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
+                        <p *ngIf="campoNoValido('nombre')">The name is required</p>
                         <p *ngIf="campoNoValido('email')">
-                            El email es obligatorio y tiene que ser valido
+                            The email is required and has to be valid
                         </p>
                         <p *ngIf="contrasenasNoValidas()">
-                            Las contrasenas deben de ser iguales
+                            Passwords must be the same
                         </p>
-                        <p *ngIf="aceptaTerminos()">Debe de aceptar los terminos</p>
+                        <p *ngIf="aceptaTerminos()">You must accept the terms</p>
                     </div>
                 </div>
                 <div class="form-group text-center m-t-20">

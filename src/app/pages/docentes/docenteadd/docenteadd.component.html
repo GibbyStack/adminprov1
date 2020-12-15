@@ -2,19 +2,19 @@
     <div class="card-body">
         <form (ngSubmit)="crearDocente()" [formGroup]="docenteaddForm">
             <div class="form-body">
-                <h3 class="card-title">Informacion necesaria para el registro del Docente</h3>
+                <h3 class="card-title">Information necessary for teacher registration</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Nombre</label>
+                            <label class="control-label">Name</label>
                             <input class="form-control" type="text" formControlName="nombre">
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Edad</label>
+                            <label class="control-label">Age</label>
                             <input class="form-control" type="number" formControlName="edad">
                         </div>
                     </div>
@@ -24,14 +24,14 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Titulo</label>
+                            <label class="control-label">Title</label>
                             <input class="form-control" type="text" formControlName="titulo">
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Tipo</label>
+                            <label class="control-label">Type</label>
                             <select class="form-control custom-select" formControlName="tipo">
                                 <option value="PLANTA">PLANTA</option>
                                 <option value="MEDIO TIEMPO">MEDIO TIEMPO</option>
@@ -42,10 +42,10 @@
                 <!--/span-->
             </div>
             <div class="col text-danger">
-                <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
-                <p *ngIf="campoNoValido('edad')">La edad es obligatoria</p>
-                <p *ngIf="campoNoValido('titulo')">El sexo es obligatorio</p>
-                <p *ngIf="campoNoValido('tipo')">El semestre es obligatorio</p>
+                <p *ngIf="campoNoValido('nombre')">The name is required</p>
+                <p *ngIf="campoNoValido('edad')">Age required</p>
+                <p *ngIf="campoNoValido('titulo')">The title is required</p>
+                <p *ngIf="campoNoValido('tipo')">The type is required</p>
             </div>
             <hr>
             <div class="form-actions">

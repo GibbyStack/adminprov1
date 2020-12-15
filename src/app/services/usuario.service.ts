@@ -7,6 +7,7 @@ import { tap, map, catchError } from 'rxjs/operators';
 import { of, Observable } from 'rxjs';
 import { RenewPasswordForm } from '../interfaces/renewpassword-form.interface';
 import { ProfileForm } from '../interfaces/profile-form.interface';
+import { MyprofileForm } from '../interfaces/myprofile-form.interface';
 
 const base_url = environment.base_url;
 
@@ -16,12 +17,16 @@ const base_url = environment.base_url;
 export class UsuarioService {
   constructor(private http: HttpClient) {}
 
+  getSingleUsuario(id) {
+    return this.http.get(`${base_url}/usuarios/email/${id}`);
+  }
+
   crearUsuario(formData: RegisterForm) {
     return this.http.post(`${base_url}/usuarios`, formData);
   }
 
-  getSingleUsuario(formData: ProfileForm) {
-    return this.http.put(`${base_url}/usuarios/email`, formData);
+  updateUsuario(formData: MyprofileForm) {
+    return this.http.put(`${base_url}/usuarios`, formData);
   }
 
   login(formData: LoginForm) {

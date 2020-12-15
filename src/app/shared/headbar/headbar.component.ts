@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-headbar',
   templateUrl: './headbar.component.html',
@@ -8,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadbarComponent implements OnInit {
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
   }

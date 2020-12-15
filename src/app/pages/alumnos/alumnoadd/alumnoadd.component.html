@@ -2,19 +2,19 @@
     <div class="card-body">
         <form (ngSubmit)="crearAlumno()" [formGroup]="alumnoaddForm">
             <div class="form-body">
-                <h3 class="card-title">Informacion necesaria para el registro del Alumno</h3>
+                <h3 class="card-title">Information necessary for the registration of the Student</h3>
                 <hr>
                 <div class="row p-t-20">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Nombre</label>
+                            <label class="control-label">Name</label>
                             <input class="form-control" type="text" formControlName="nombre">
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Edad</label>
+                            <label class="control-label">Age</label>
                             <input class="form-control" type="number" formControlName="edad">
                         </div>
                     </div>
@@ -24,27 +24,27 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Sexo</label>
+                            <label class="control-label">Gender</label>
                             <select class="form-control custom-select" formControlName="sexo">
-                                <option value="M">Masculino</option>
-                                <option value="F">Femenino</option>
+                                <option value="M">Male</option>
+                                <option value="F">Female</option>
                             </select>
                         </div>
                     </div>
                     <!--/span-->
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label class="control-label">Semestre</label>
+                            <label class="control-label">Semester</label>
                             <select class="form-control custom-select" formControlName="semestre">
-                                <option value=1>Primero</option>
-                                <option value=2>Segundo</option>
-                                <option value=3>Tercero</option>
-                                <option value=4>Cuarto</option>
-                                <option value=5>Quinto</option>
-                                <option value=6>Sexto</option>
-                                <option value=7>Septimo</option>
-                                <option value=8>Octavo</option>
-                                <option value=9>Noveno</option>
+                                <option value=1>First</option>
+                                <option value=2>Second</option>
+                                <option value=3>Third</option>
+                                <option value=4>Fourth</option>
+                                <option value=5>Fifth</option>
+                                <option value=6>Sixth</option>
+                                <option value=7>Seventh</option>
+                                <option value=8>Eighth</option>
+                                <option value=9>Nineth</option>
                             </select>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label class="control-label">Carrera</label>
+                        <label class="control-label">Specialty</label>
                         <select class="form-control custom-select" formControlName="carrera">
                                 <option value="INFO">INFORMATICA</option>
                                 <option value="INDU">INDUSTRIAL</option>
@@ -67,11 +67,11 @@
             </div>
             <!--/row-->
             <div class="col text-danger">
-                <p *ngIf="campoNoValido('nombre')">El nombre es obligatorio</p>
-                <p *ngIf="campoNoValido('edad')">La edad es obligatoria</p>
-                <p *ngIf="campoNoValido('sexo')">El sexo es obligatorio</p>
-                <p *ngIf="campoNoValido('semestre')">El semestre es obligatorio</p>
-                <p *ngIf="campoNoValido('carrera')">La carrera es obligatorio</p>
+                <p *ngIf="campoNoValido('nombre')">The name is required</p>
+                <p *ngIf="campoNoValido('edad')">Age required</p>
+                <p *ngIf="campoNoValido('sexo')">Gender required</p>
+                <p *ngIf="campoNoValido('semestre')">The semester is required</p>
+                <p *ngIf="campoNoValido('carrera')">The race is required</p>
             </div>
             <hr>
             <div class="form-actions">

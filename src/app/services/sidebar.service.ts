@@ -11,9 +11,9 @@ export class SidebarService {
     submenu: [
       {titulo: 'Main', url: '/'},
       {titulo: 'ProgressBar', url: 'progress'},
-      {titulo: 'Alumnos', url: 'alumnos'},
-      {titulo: 'Docentes', url: 'docentes'},
-      {titulo: 'Materias', url: 'materias'}
+      {titulo: 'Students', url: 'alumnos'},
+      {titulo: 'Teachers', url: 'docentes'},
+      {titulo: 'Subject ', url: 'materias'}
     ]
   }
 ];
