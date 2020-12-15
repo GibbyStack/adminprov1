@@ -50,7 +50,7 @@ export class MyprofileComponent implements OnInit {
               confirmButtonText: 'Ok'
             }).then((result) => {
               if (result.isConfirmed) {
-                this.router.navigateByUrl('/dashboard/myprofile');
+                this.router.navigateByUrl('/dashboard');
               }
             });
           } else {
