@@ -12,22 +12,27 @@ export class DocenteService {
     constructor (private http: HttpClient) {}
 
     getAllDocente() {
-        return this.http.get(`${base_url}/docentes`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.get(`${base_url}/docentes`, {headers: {'x-token': token}});
     }
 
     getSingleDocente(id) {
-        return this.http.get(`${base_url}/docentes/${id}`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.get(`${base_url}/docentes/${id}`, {headers: {'x-token': token}});
     }
 
     updateDocente(id, formData: DocenteForm) {
-        return this.http.put(`${base_url}/docentes/${id}`, formData);
+      const token = localStorage.getItem('token') || '';
+      return this.http.put(`${base_url}/docentes/${id}`, formData, {headers: {'x-token': token}});
     }
 
     addDocente(formData: DocenteForm) {
-        return this.http.post(`${base_url}/docentes`, formData);
+      const token = localStorage.getItem('token') || '';
+      return this.http.post(`${base_url}/docentes`, formData, {headers: {'x-token': token}});
     }
 
     deleteDocente(id) {
-        return this.http.delete(`${base_url}/docentes/${id}`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.delete(`${base_url}/docentes/${id}`, {headers: {'x-token': token}});
     }
 }

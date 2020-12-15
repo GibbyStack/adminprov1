@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
             localStorage.removeItem('email');
           }
           Swal.fire({
-            title: 'Exito!',
+            title: 'Success!',
             text: resp.message,
             icon: 'success',
             confirmButtonText: 'Ok',

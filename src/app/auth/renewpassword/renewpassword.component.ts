@@ -33,7 +33,7 @@ export class RenewpasswordComponent {
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
-              title: 'Exito!',
+              title: 'Success!',
               text: resp.message,
               icon: 'success',
               confirmButtonText: 'Ok'

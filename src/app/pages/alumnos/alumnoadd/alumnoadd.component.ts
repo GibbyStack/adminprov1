@@ -50,7 +50,7 @@ export class AlumnoaddComponent implements OnInit {
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
-              title: 'Exito!',
+              title: 'Success!',
               text: resp.message,
               icon: 'success',
               confirmButtonText: 'Ok'
@@ -71,7 +71,7 @@ export class AlumnoaddComponent implements OnInit {
         (err) => console.warn(err)
       );
     } else {
-      console.log('formulario no valido');  
+      console.log('formulario no valido');
     }
   }
 }

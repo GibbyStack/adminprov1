@@ -77,7 +77,7 @@ export class DocenteupdateComponent implements OnInit {
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
-              title: 'Exito!',
+              title: 'Success!',
               text: resp.message,
               icon: 'success',
               confirmButtonText: 'Ok'
@@ -116,7 +116,7 @@ export class DocenteupdateComponent implements OnInit {
           (resp: any) => {
             if (resp.status) {
               Swal.fire({
-                title: 'Exito!',
+                title: 'Success!',
                 text: resp.message,
                 icon: 'success',
                 confirmButtonText: 'Ok'

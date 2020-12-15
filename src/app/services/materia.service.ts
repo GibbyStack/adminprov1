@@ -12,22 +12,27 @@ export class MateriaService {
     constructor(private http: HttpClient) {}
 
     getAllMaterias() {
-        return this.http.get(`${base_url}/materias`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.get(`${base_url}/materias`, {headers: {'x-token': token}});
     }
 
     getSingleMateria(id) {
-        return this.http.get(`${base_url}/materias/${id}`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.get(`${base_url}/materias/${id}`, {headers: {'x-token': token}});
     }
 
     updateMateria(id, formData: MateriaForm) {
-        return this.http.put(`${base_url}/materias/${id}`, formData);
+      const token = localStorage.getItem('token') || '';
+      return this.http.put(`${base_url}/materias/${id}`, formData, {headers: {'x-token': token}});
     }
 
     addMateria(formData: MateriaForm) {
-        return this.http.post(`${base_url}/materias`, formData);
+      const token = localStorage.getItem('token') || '';
+      return this.http.post(`${base_url}/materias`, formData, {headers: {'x-token': token}});
     }
 
     deleteMateria(id) {
-        return this.http.delete(`${base_url}/materias/${id}`);
+      const token = localStorage.getItem('token') || '';
+      return this.http.delete(`${base_url}/materias/${id}`, {headers: {'x-token': token}});
     }
 }

@@ -18,7 +18,8 @@ export class UsuarioService {
   constructor(private http: HttpClient) {}
 
   getSingleUsuario(id) {
-    return this.http.get(`${base_url}/usuarios/email/${id}`);
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/usuarios/${id}`, {headers: {'x-token': token}});
   }
 
   crearUsuario(formData: RegisterForm) {
@@ -26,7 +27,8 @@ export class UsuarioService {
   }
 
   updateUsuario(formData: MyprofileForm) {
-    return this.http.put(`${base_url}/usuarios`, formData);
+    const token = localStorage.getItem('token') || '';
+    return this.http.put(`${base_url}/usuarios`, formData,  {headers: {'x-token': token}});
   }
 
   login(formData: LoginForm) {

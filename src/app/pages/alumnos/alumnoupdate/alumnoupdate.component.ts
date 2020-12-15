@@ -79,7 +79,7 @@ export class AlumnoupdateComponent implements OnInit{
         (resp: any) => {
           if (resp.status) {
             Swal.fire({
-              title: 'Exito!',
+              title: 'Success!',
               text: resp.message,
               icon: 'success',
               confirmButtonText: 'Ok'
@@ -118,7 +118,7 @@ export class AlumnoupdateComponent implements OnInit{
           (resp: any) => {
             if (resp.status) {
               Swal.fire({
-                title: 'Exito!',
+                title: 'Success!',
                 text: resp.message,
                 icon: 'success',
                 confirmButtonText: 'Ok'

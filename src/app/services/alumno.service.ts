@@ -12,23 +12,28 @@ export class AlumnoService {
   constructor (private http: HttpClient) {}
 
   getAllAlumnos() {
-    return this.http.get(`${base_url}/alumnos`);
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/alumnos`, {headers: {'x-token': token}});
   }
 
   getSingleAlumno(id) {
-    return this.http.get(`${base_url}/alumnos/${id}`);
+    const token = localStorage.getItem('token') || '';
+    return this.http.get(`${base_url}/alumnos/${id}`, {headers: {'x-token': token}});
   }
 
   updateAlumno(id, formData: AlumnoForm) {
-    return this.http.put(`${base_url}/alumnos/${id}`, formData);
+    const token = localStorage.getItem('token') || '';
+    return this.http.put(`${base_url}/alumnos/${id}`, formData, {headers: {'x-token': token}});
   }
 
   addAlumno(formData: AlumnoForm) {
-    return this.http.post(`${base_url}/alumnos`, formData);
+    const token = localStorage.getItem('token') || '';
+    return this.http.post(`${base_url}/alumnos`, formData, {headers: {'x-token': token}});
   }
 
   deleteAlumno(id){
-    return this.http.delete(`${base_url}/alumnos/${id}`);
+    const token = localStorage.getItem('token') || '';
+    return this.http.delete(`${base_url}/alumnos/${id}`, {headers: {'x-token': token}});
   }
 
 }

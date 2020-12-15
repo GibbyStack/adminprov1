@@ -4,16 +4,18 @@
         <div class="card">
             <div class="card-body">
                 <div class="m-t-30" style="text-align: center;">
-                    <img src={{usuario.picture}} class="img-circle" width="150" />
-
-                    <h4 class="card-title m-t-10">{{usuario.nombre}}</h4>
+                    <div>
+                        <img *ngIf="comprobarImg()" src={{usuario.picture}} class="img-circle" width="150" />
+                        <img *ngIf="!comprobarImg()" src="./assets/images/users/profile.png" class="img-circle" width="150" />
+                    </div>
+                    <h4 *ngIf="comprobarUsuario()" class="card-title m-t-10">{{usuario.nombre}}</h4>
                     <h6 class="card-subtitle">Programador Jr</h6>
                 </div>
             </div>
             <div>
                 <hr> </div>
             <div class="card-body"> <small class="text-muted">Email</small>
-                <h6>{{usuario.email}}</h6>
+                <h6 *ngIf="comprobarUsuario()">{{usuario.email}}</h6>
                 <br/>
                 <button class="btn btn-circle btn-secondary"><i class="fa fa-facebook"></i></button>
                 <button class="btn btn-circle btn-secondary"><i class="fa fa-twitter"></i></button>
@@ -38,7 +40,7 @@
                         <div class="row">
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Name</strong>
                                 <br>
-                                <p class="text-muted">{{usuario.nombre}}</p>
+                                <p *ngIf="comprobarUsuario()" class="text-muted">{{usuario.nombre}}</p>
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Phone</strong>
                                 <br>
@@ -46,7 +48,7 @@
                             </div>
                             <div class="col-md-3 col-xs-6 b-r"> <strong>Email</strong>
                                 <br>
-                                <p class="text-muted">{{usuario.email}}</p>
+                                <p *ngIf="comprobarUsuario()" class="text-muted">{{usuario.email}}</p>
                             </div>
                             <div class="col-md-3 col-xs-6"> <strong>Location</strong>
                                 <br>
@@ -63,7 +65,7 @@
                 </div>
                 <div class="tab-pane" id="settings" role="tabpanel">
                     <div class="card-body">
-                        <form class="form-horizontal form-material" [formGroup]="myprofileForm">
+                        <form (ngSubmit)="actualizarUsuario()" class="form-horizontal form-material" [formGroup]="myprofileForm">
                             <div class="form-group">
                                 <label class="col-md-12">Name</label>
                                 <div class="col-md-12">
@@ -74,18 +76,6 @@
                                 <label for="example-email" class="col-md-12">Email</label>
                                 <div class="col-md-12">
                                     <input type="email" placeholder="Email" class="form-control form-control-line" name="example-email" id="example-email" formControlName="email">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-12">Password</label>
-                                <div class="col-md-12">
-                                    <input type="password" placeholder="password" class="form-control form-control-line" formControlName="password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="col-md-12">Confirm Password</label>
-                                <div class="col-md-12">
-                                    <input type="password" placeholder="password" class="form-control form-control-line" formControlName="password2">
                                 </div>
                             </div>
                             <div class="form-group">
@@ -100,15 +90,11 @@
                                     <p *ngIf="campoNoValido('email')">
                                         The email is required and has to be valid
                                     </p>
-                                    <p *ngIf="contrasenasNoValidas()">
-                                        Passwords must be the same
-                                    </p>
-                                    <p *ngIf="campoNoValido('picture')">The picture is required</p>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-success">Update profile</button>
+                                    <button type="submit" class="btn btn-success">Update profile</button>
                                 </div>
                             </div>
                         </form>
